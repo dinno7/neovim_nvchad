@@ -123,10 +123,6 @@ map("n", "<leader><leader>k", "<cmd> HopLineStartBC <CR>", { desc = "Start of li
 map("n", "<leader><leader>w", "<cmd> HopWordMW <CR>", { desc = "Start of words" })
 map("n", "<leader><leader>/", "<cmd> HopPatternMW <CR>", { desc = "Search by pattern" })
 
--- marks
-map("n", "]]", "]'", { desc = "Go to next mark" })
-map("n", "[[", "['", { desc = "Go to previous mark" })
-
 -- lsp telescope
 map("n", "gr", "<cmd>Telescope lsp_references<CR>", { desc = "LSP references" })
 map("n", "gd", "<cmd>Lspsaga peek_definition<CR>", { desc = "LSP definition" })
