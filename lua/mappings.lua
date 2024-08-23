@@ -36,7 +36,6 @@ map("v", "//", 'y/<C-R>"<CR>', { desc = "Search for highlighted text" })
 map("n", "<leader>cf", '<cmd>let @+ = expand("%")<CR>', { desc = "Copy File Name" })
 map("n", "<leader>cp", '<cmd>let @+ = expand("%:p")<CR>', { desc = "Copy File Path" })
 
-map("n", ";", ":", { desc = "CMD enter command mode" })
 map({ "n", "i", "v" }, "<C-s>", "<CMD>w<CR>")
 
 map("n", "Q", "q", { desc = "Mapping macro mode to Q" })
@@ -124,7 +123,7 @@ map("n", "<leader><leader>w", "<cmd> HopWordMW <CR>", { desc = "Start of words" 
 map("n", "<leader><leader>/", "<cmd> HopPatternMW <CR>", { desc = "Search by pattern" })
 
 -- lsp telescope
-map("n", "gr", "<cmd>Telescope lsp_references<CR>", { desc = "LSP references" })
+map("n", "gr", "<cmd>Telescope lsp_references<CR>", { desc = "LSP Telescope show refrences" })
 map("n", "gd", "<cmd>Lspsaga peek_definition<CR>", { desc = "LSP definition" })
 map("n", "gi", "<cmd>Telescope lsp_implementations<CR>", { desc = "LSP implementation" })
 map("n", "gf", "<cmd>Lspsaga finder<CR>", { desc = "Show definition, references" })
@@ -137,13 +136,6 @@ map("n", "<leader>ra", "<cmd>Lspsaga rename<CR>", { desc = "Smart rename" })
 map("n", "<leader>ca", "<cmd>Lspsaga code_action<CR>", { desc = "See available code actions" })
 map("n", "<leader>tt", "<cmd>Lspsaga term_toggle<CR>", { desc = "See available code actions" })
 map("n", "K", function()
-  -- local diagnostics = vim.diagnostic.get(0, { lnum = vim.fn.line "." - 1 })
-  -- if #diagnostics > 0 then
-  --   vim.diagnostic.open_float()
-  -- else
-  --   vim.lsp.buf.hover()
-  -- end
-
   local diagnostics = vim.diagnostic.get(0, { lnum = vim.fn.line "." - 1 })
   if #diagnostics > 0 then
     require("lspsaga.diagnostic.show"):show_diagnostics { line = true }
@@ -152,3 +144,19 @@ map("n", "K", function()
   end
 end, { desc = "Show documentation for what is under cursor" })
 -- map("n", "K", "<cmd>Lspsaga hover_doc<CR>", { desc = "Show documentation for what is under cursor" })
+
+-- Go.nvim keymaps
+map("n", "<leader>gc", ":GoCmt<CR>", { desc = "Go - Add comment for function" })
+map("n", "<leader>gta", ":GoAddTag<CR>", { desc = "Go - Add tag for struct" })
+map("n", "<leader>gtr", ":GoRmTag<CR>", { desc = "Go - Remove tag from struct" })
+map("n", "<leader>gtc", ":GoClearTag<CR>", { desc = "Go - Clear tag from struct" })
+map("n", "<leader>gh", ":GoToggleInlay<CR>", { desc = "Go - Toggle inlay hint" })
+map("n", "<leader>gfs", ":GoFillStruct<CR>", { desc = "Go - Fill struct" })
+map("n", "<leader>gfw", ":GoFillSwitch<CR>", { desc = "Go - Fill switch" })
+map("n", "<leader>gfe", ":GoIfErr<CR>", { desc = "Go - Add if error" })
+map(
+  "n",
+  "<leader>gfp",
+  ":GoFixPlurals<CR>",
+  { desc = "Go - change func foo(b int, a int, r int) -> func foo(b, a, r int)" }
+)
