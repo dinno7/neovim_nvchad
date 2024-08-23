@@ -16,6 +16,11 @@ local options = {
     lua = { "stylua" },
     python = { "isort", "black" },
     cpp = { "clang-format" },
+    go = {
+      "golines",
+      "goimports",
+      "gofumpt",
+    },
   },
   format_on_save = {
     lsp_fallback = true,

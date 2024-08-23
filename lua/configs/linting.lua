@@ -7,6 +7,7 @@ lint.linters_by_ft = {
   typescriptreact = { "eslint_d" },
   vue = { "eslint_d" },
   python = { "pylint" },
+  go = { "golangcilint" },
 }
 
 local lint_augroup = vim.api.nvim_create_augroup("lint", { clear = true })

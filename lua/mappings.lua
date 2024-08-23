@@ -19,6 +19,9 @@ map("v", "p", '"_dP')
 -- Change text without overwriting register
 map({ "n", "v" }, "c", '"_c')
 
+-- Change text without overwriting register
+map({ "n", "v" }, "x", '"_x')
+
 -- Move block
 map("v", "<A-k>", ":m '<-2<CR>gv=gv", { desc = "Move Block Up" })
 map("v", "<A-j>", ":m '>+1<CR>gv=gv", { desc = "Move Block Down" })
@@ -144,19 +147,3 @@ map("n", "K", function()
   end
 end, { desc = "Show documentation for what is under cursor" })
 -- map("n", "K", "<cmd>Lspsaga hover_doc<CR>", { desc = "Show documentation for what is under cursor" })
-
--- Go.nvim keymaps
-map("n", "<leader>gc", ":GoCmt<CR>", { desc = "Go - Add comment for function" })
-map("n", "<leader>gta", ":GoAddTag<CR>", { desc = "Go - Add tag for struct" })
-map("n", "<leader>gtr", ":GoRmTag<CR>", { desc = "Go - Remove tag from struct" })
-map("n", "<leader>gtc", ":GoClearTag<CR>", { desc = "Go - Clear tag from struct" })
-map("n", "<leader>gh", ":GoToggleInlay<CR>", { desc = "Go - Toggle inlay hint" })
-map("n", "<leader>gfs", ":GoFillStruct<CR>", { desc = "Go - Fill struct" })
-map("n", "<leader>gfw", ":GoFillSwitch<CR>", { desc = "Go - Fill switch" })
-map("n", "<leader>gfe", ":GoIfErr<CR>", { desc = "Go - Add if error" })
-map(
-  "n",
-  "<leader>gfp",
-  ":GoFixPlurals<CR>",
-  { desc = "Go - change func foo(b int, a int, r int) -> func foo(b, a, r int)" }
-)
