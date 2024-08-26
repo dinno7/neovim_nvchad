@@ -14,6 +14,13 @@ o.relativenumber = true
 
 o.colorcolumn = "80"
 
+-- INFO: Enable mouse mapping to vim-multi
+vim.g.VM_mouse_mappings = 1
+
+-- INFO: Enable spell checker
+o.spelllang = "en_us"
+o.spell = true
+
 vim.g.vscode_snippets_standalone_path = "~/.config/nvim/dinno.code-snippets"
 
 -- Highlight in yank
@@ -132,5 +139,5 @@ vim.api.nvim_create_user_command("ToggleHexView", function()
   end
 end, {})
 
--- Optional: Map a key to toggle hex view
+-- INFO: Optional: Map a key to toggle hex view
 -- vim.api.nvim_set_keymap("n", "u", ":ToggleHexView<CR>", { noremap = true, silent = true })
