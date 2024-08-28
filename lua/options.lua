@@ -4,7 +4,8 @@ require "nvchad.options"
 
 local o = vim.opt
 
--- o.cursorlineopt ='both' -- to enable cursorline!
+o.cursorlineopt = "both" -- to enable cursorline!
+
 o.foldcolumn = "1"
 o.foldlevel = 99
 o.foldlevelstart = 99
@@ -21,9 +22,10 @@ vim.g.VM_mouse_mappings = 1
 o.spelllang = "en_us"
 o.spell = true
 
+-- INFO: Get custom snippets from VSCode
 vim.g.vscode_snippets_standalone_path = "~/.config/nvim/dinno.code-snippets"
 
--- Highlight in yank
+-- INFO: Highlight in yank
 vim.api.nvim_create_autocmd("TextYankPost", {
   group = vim.api.nvim_create_augroup("highlight_yank", { clear = true }),
   callback = function()
@@ -31,7 +33,7 @@ vim.api.nvim_create_autocmd("TextYankPost", {
   end,
 })
 
--- Function to convert binary data to hex view
+-- INFO: Function to convert binary data to hex view
 local function binary_to_hex(binary_string)
   local hex_view = ""
   local ascii_view = ""
@@ -67,7 +69,7 @@ local function binary_to_hex(binary_string)
   return hex_view
 end
 
--- Function to check if file is binary
+-- INFO: Function to check if file is binary
 local function is_binary(filename)
   local file = io.open(filename, "rb")
   if not file then
@@ -93,7 +95,7 @@ local function is_binary(filename)
   return (non_printable / #chunk) > 0.3
 end
 
--- Autocmd to open binary files in hex view
+-- INFO: Autocmd to open binary files in hex view
 vim.api.nvim_create_autocmd({ "BufReadPost" }, {
   pattern = "*",
   callback = function()
@@ -123,7 +125,7 @@ vim.api.nvim_create_autocmd({ "BufReadPost" }, {
   end,
 })
 
--- Optional: Add a command to toggle hex view
+-- INFO: Optional: Add a command to toggle hex view
 vim.api.nvim_create_user_command("ToggleHexView", function()
   if vim.bo.filetype == "hexdump" then
     -- Reopen the file normally
@@ -140,4 +142,21 @@ vim.api.nvim_create_user_command("ToggleHexView", function()
 end, {})
 
 -- INFO: Optional: Map a key to toggle hex view
+--
 -- vim.api.nvim_set_keymap("n", "u", ":ToggleHexView<CR>", { noremap = true, silent = true })
+
+-- INFO: Restore cursor position
+vim.api.nvim_create_autocmd("BufReadPost", {
+  pattern = "*",
+  callback = function()
+    local line = vim.fn.line "'\""
+    if
+      line > 1
+      and line <= vim.fn.line "$"
+      and vim.bo.filetype ~= "commit"
+      and vim.fn.index({ "xxd", "gitrebase" }, vim.bo.filetype) == -1
+    then
+      vim.cmd 'normal! g`"'
+    end
+  end,
+})
