@@ -1,6 +1,7 @@
 require "nvchad.mappings"
 -- add yours here
 local map = vim.keymap.set
+local nomap = vim.keymap.del
 
 -- INFO: Keep window centered when going up/down
 map("n", "<C-d>", "<C-d>zz")
@@ -57,7 +58,7 @@ map("n", "<A-Left>", ":vertical resize +5<CR>", { desc = "Resize Vertical Split 
 
 -- INFO: Split windows keymaps
 map("n", "<leader>sv", "<C-w>v", { desc = "Split window vertically" })
-map("n", "<leader>sh", "<C-w>s", { desc = "Split window horizontally" })
+map("n", "<leader>ss", "<C-w>s", { desc = "Split window horizontally" })
 map("n", "<leader>se", "<C-w>=", { desc = "Make split windows equal width & height" })
 map("n", "<leader>sx", "<cmd> close <CR>", { desc = "Close split windows" })
 
@@ -130,6 +131,7 @@ map("n", "<leader><leader>w", "<cmd> HopWordMW <CR>", { desc = "Start of words" 
 map("n", "<leader><leader>/", "<cmd> HopPatternMW <CR>", { desc = "Search by pattern" })
 
 -- INFO: lsp + telescope and lsp + lspsaga
+map("n", "<leader>gr", "<cmd>Telescope lsp_references<CR>", { desc = "LSP Telescope show refrences" })
 map("n", "gr", "<cmd>Telescope lsp_references<CR>", { desc = "LSP Telescope show refrences" })
 map("n", "gd", "<cmd>Lspsaga peek_definition<CR>", { desc = "LSP definition" })
 map("n", "gi", "<cmd>Telescope lsp_implementations<CR>", { desc = "LSP implementation" })
