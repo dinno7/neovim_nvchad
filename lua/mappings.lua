@@ -115,8 +115,15 @@ map({ "i", "n", "v" }, "<M-C-Z>", "<cmd>redo<cr>", { desc = "Redo" })
 map("i", "<C-Del>", "<ESC>ldwha", { desc = "Delete word after cursor" })
 
 -- INFO: UFO(pkg) folding:
-map("n", "zR", require("ufo").openAllFolds)
-map("n", "zM", require("ufo").closeAllFolds)
+map("n", "zR", require("ufo").openAllFolds, { desc = "UFO Open all folds" })
+map("n", "zM", require("ufo").closeAllFolds, { desc = "UFO Close all folds" })
+map("n", "zk", function()
+  local winid = require("ufo").peekFoldedLinesUnderCursor()
+  if not winid then
+    -- vim.lsp.buf.hover()
+    require("lspsaga.hover"):render_hover_doc()
+  end
+end, { desc = "Show fold preview else show hover documentation" })
 
 -- INFO: hop easymotion:
 map("n", "<leader><leader>s", "<cmd> HopChar1MW <CR>", { desc = "Search by 1 characters" })
@@ -149,6 +156,10 @@ map("n", "K", function()
   if #diagnostics > 0 then
     require("lspsaga.diagnostic.show"):show_diagnostics { line = true }
   else
-    require("lspsaga.hover"):render_hover_doc()
+    local winid = require("ufo").peekFoldedLinesUnderCursor()
+    if not winid then
+      -- vim.lsp.buf.hover()
+      require("lspsaga.hover"):render_hover_doc()
+    end
   end
-end, { desc = "Show documentation for what is under cursor" })
+end, { desc = "Show errors if exist, else show fold preview, else Show documentation for what is under cursor" })
