@@ -14,8 +14,13 @@ return {
       local macchiato = require("catppuccin.palettes").get_palette "macchiato"
 
       -- Create a highlight group for the popup menu
+      -- local mauve_highlight = wilder.make_hl("WilderMauve", { { a = 1 }, { a = 1 }, { foreground = macchiato.mauve } })
+      -- local blue_highlight = wilder.make_hl("WilderMauve", { { a = 1 }, { a = 1 }, { foreground = macchiato.blue } })
       local text_highlight = wilder.make_hl("WilderText", { { a = 1 }, { a = 1 }, { foreground = macchiato.text } })
-      local mauve_highlight = wilder.make_hl("WilderMauve", { { a = 1 }, { a = 1 }, { foreground = macchiato.mauve } })
+      local maroon_highlight =
+        wilder.make_hl("WilderMaroon", { { a = 1 }, { a = 1 }, { foreground = macchiato.maroon } })
+      local sapphire_highlight =
+        wilder.make_hl("WilderSapphire", { { a = 1 }, { a = 1 }, { foreground = macchiato.sapphire } })
 
       -- Enable wilder when pressing :, / or ?
       wilder.setup { modes = { ":", "/", "?" } }
@@ -38,8 +43,8 @@ return {
           highlighter = wilder.basic_highlighter(),
           highlights = {
             default = text_highlight,
-            border = mauve_highlight,
-            accent = mauve_highlight,
+            border = maroon_highlight,
+            accent = sapphire_highlight,
           },
           -- 'single', 'double', 'rounded' or 'solid'
           -- can also be a list of 8 characters, see :h wilder#popupmenu_palette_theme() for more details
@@ -54,24 +59,6 @@ return {
           right = { " ", wilder.popupmenu_scrollbar() },
         })
       )
-
-      -- wilder.set_option(
-      --   "renderer",
-      --   wilder.popupmenu_renderer(wilder.popupmenu_border_theme {
-      --     highlighter = wilder.basic_highlighter(),
-      --     highlights = {
-      --       default = text_highlight,
-      --       border = mauve_highlight,
-      --       accent = mauve_highlight,
-      --     },
-      --     min_width = "20%",
-      --     min_height = "25%",
-      --     max_height = "25%",
-      --     border = "rounded",
-      --     left = { " ", wilder.popupmenu_devicons() },
-      --     right = { " ", wilder.popupmenu_scrollbar() },
-      --   })
-      -- )
     end,
   },
 }
