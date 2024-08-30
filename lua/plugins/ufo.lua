@@ -4,4 +4,5 @@ return {
     "kevinhwang91/promise-async",
   },
   opts = require "configs.ufo",
+  event = "BufReadPost",
 }
