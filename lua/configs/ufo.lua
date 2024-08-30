@@ -1,9 +1,3 @@
-local ftMap = {
-  vim = "indent",
-  python = { "indent" },
-  git = "",
-}
-
 local handlePreviewMessage = function(virtText, lnum, endLnum, width, truncate)
   local newVirtText = {}
   local suffix = (" 󰁂📁 %d lines are folded"):format(endLnum - lnum)
@@ -31,6 +25,12 @@ local handlePreviewMessage = function(virtText, lnum, endLnum, width, truncate)
   table.insert(newVirtText, { suffix, "MoreMsg" })
   return newVirtText
 end
+
+local ftMap = {
+  vim = "indent",
+  python = { "indent" },
+  git = "",
+}
 
 local customizeSelector = function(bufnr)
   local function handleFallbackException(err, providerName)
@@ -66,9 +66,9 @@ local opts = {
     },
   },
   fold_virt_text_handler = handlePreviewMessage,
-  provider_selector = function(_, filetype)
+  provider_selector = function(bufnr, filetype, buftype)
     return ftMap[filetype] or customizeSelector
-    --   return { "treesitter", "indent" }
+    -- return { "treesitter", "indent" }
   end,
 }
 
