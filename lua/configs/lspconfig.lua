@@ -10,6 +10,7 @@ local goplsOptions = require "configs.lspservers.gopls"
 local servers = {
   html = {},
   cssls = {},
+  bashls = {},
   emmet_ls = {
     filetypes = { "html", "typescriptreact", "javascriptreact", "css", "vue", "sass", "scss", "less", "svelte" },
   },
