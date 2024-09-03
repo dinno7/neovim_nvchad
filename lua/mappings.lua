@@ -60,6 +60,12 @@ map(
   { desc = "Change current working directory locally and print cwd after that" }
 )
 
+-- INFO: Close all other buffers
+map("n", "<leader>X", function()
+  require("nvchad.tabufline").closeBufs_at_direction "left"
+  require("nvchad.tabufline").closeBufs_at_direction "right"
+end)
+
 -- INFO: Select whole file
 map("n", "<leader>a", "ggVG", { desc = "Select whole file" })
 
