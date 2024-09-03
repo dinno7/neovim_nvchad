@@ -9,6 +9,13 @@ map("n", "<C-u>", "<C-u>zz")
 map("n", "n", "nzzzv")
 map("n", "N", "Nzzzv")
 
+-- INFO: Jump to matching pair easily in normal mode
+map("n", "<Tab>", "%", { desc = "Jump to matching pair easily in normal mode" })
+
+-- INFO: Word cases
+map("i", "<c-t>", "<esc>b~lea", { desc = "Word-cases Turn the current word into title case" })
+map("i", "<c-u>", "<esc>viw~ea", { desc = "Word-cases Toggle the current word into upper case" })
+
 -- INFO: Paste without overwriting register
 map("v", "p", '"_dP')
 
@@ -39,6 +46,20 @@ map("n", "<leader>cp", '<cmd>let @+ = expand("%:p")<CR>', { desc = "Copy File Pa
 map("n", "q", "", { desc = "Remove q to go macro mode" })
 map("n", "Q", "q", { desc = "Mapping macro mode to Q" })
 
+map(
+  "v",
+  "/",
+  ":<C-U>call feedkeys(\"/%>'.(line(''<\")-1).'l%<'.(line(\"'>\")+1).\"l\")<CR>",
+  { desc = "Search in selected region" }
+)
+
+map(
+  "n",
+  "<leader>cd",
+  ":lcd %:p:h<CR>:pwd<CR>",
+  { desc = "Change current working directory locally and print cwd after that" }
+)
+
 -- INFO: Select whole file
 map("n", "<leader>a", "ggVG", { desc = "Select whole file" })
 
@@ -48,7 +69,11 @@ map("n", "<leader>ii", function()
 end, { desc = "LSP formatting" })
 
 -- INFO: Close all files(exit neovim)
-map("n", "<C-w>Q", "<cmd>qa<CR>", { desc = "Close all windows(Exit Neovim)" })
+map("n", "<leader>Q", ":qa<CR>", { desc = "Close all buffers" })
+map("n", "<leader>q", ":x<CR>", { desc = "Save the file if modified and exit" })
+
+-- INFO: Reselect the text that has just been pasted
+map("n", "<leader>V", "`[V`]", { desc = "Reselect the text that has just been pasted" })
 
 -- INFO: Resize split windows with arrows
 map("n", "<A-Up>", ":resize +5<CR>", { desc = "Resize Horizontal Split Down" })
@@ -151,6 +176,7 @@ map("n", "[d", "<cmd>Lspsaga diagnostic_jump_prev<CR>", { desc = "Jump to prev d
 map("n", "<leader>ra", "<cmd>Lspsaga rename<CR>", { desc = "Smart rename" })
 map("n", "<leader>ca", "<cmd>Lspsaga code_action<CR>", { desc = "See available code actions" })
 map("n", "<leader>tt", "<cmd>Lspsaga term_toggle<CR>", { desc = "See available code actions" })
+map("n", "<leader>k", "<cmd>Lspsaga hover_doc<CR>", { desc = "See hover doc" })
 map("n", "K", function()
   local diagnostics = vim.diagnostic.get(0, { lnum = vim.fn.line "." - 1 })
   if #diagnostics > 0 then
@@ -163,3 +189,6 @@ map("n", "K", function()
     end
   end
 end, { desc = "Show errors if exist, else show fold preview, else Show documentation for what is under cursor" })
+
+-- INFO: Get registers with Telescopcope registers
+map("n", "<leader>rr", ":Telescope registers<CR>", { desc = "Registers in telescope" })
