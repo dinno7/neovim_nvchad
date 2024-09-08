@@ -52,6 +52,7 @@ local customizeSelector = function(bufnr)
 end
 
 local opts = {
+  open_fold_hl_timeout = 150,
   preview = {
     win_config = {
       border = { "", "─", "", "", "", "─", "", "" },

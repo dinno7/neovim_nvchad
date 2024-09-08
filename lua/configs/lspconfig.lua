@@ -15,7 +15,8 @@ local servers = {
     filetypes = { "html", "typescriptreact", "javascriptreact", "css", "vue", "sass", "scss", "less", "svelte" },
   },
   gopls = goplsOptions,
-  tsserver = tsserverOptions,
+  ts_ls = tsserverOptions,
+  volar = {},
 }
 
 -- INFO: Initiate all defined servers
