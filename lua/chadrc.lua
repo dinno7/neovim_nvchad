@@ -34,7 +34,10 @@ M.ui = {
     Comment = { italic = true },
     ["@comment"] = { italic = true },
     CursorLine = {
-      bg = "#2e2e2e",
+      bg = "#24273a",
+    },
+    Folded = {
+      bg = "#363a4f",
     },
   },
 
