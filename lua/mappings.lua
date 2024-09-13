@@ -7,6 +7,10 @@ local nomap = vim.keymap.del
 map("n", "j", "gj")
 map("n", "k", "gk")
 
+-- ? Centered screen before go insert mode by `o` or `O`
+map("n", "o", "zzo")
+map("n", "O", "zzO")
+
 -- ? Keep window centered when going up/down
 map("n", "<C-d>", "<C-d>zz")
 map("n", "<C-u>", "<C-u>zz")
