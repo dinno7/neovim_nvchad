@@ -3,46 +3,46 @@ require "nvchad.mappings"
 local map = vim.keymap.set
 local nomap = vim.keymap.del
 
--- INFO: Keep window centered when going up/down
+-- ? Keep window centered when going up/down
 map("n", "<C-d>", "<C-d>zz")
 map("n", "<C-u>", "<C-u>zz")
 map("n", "n", "nzzzv")
 map("n", "N", "Nzzzv")
 
--- INFO: Jump to matching pair easily in normal mode
+-- ? Jump to matching pair easily in normal mode
 map("n", "<Tab>", "%", { desc = "Jump to matching pair easily in normal mode" })
 
--- INFO: Word cases
+-- ? Word cases
 map("i", "<c-t>", "<esc>b~lea", { desc = "Word-cases Turn the current word into title case" })
 map("i", "<c-u>", "<esc>viw~ea", { desc = "Word-cases Toggle the current word into upper case" })
 
--- INFO: Paste without overwriting register
+-- ? Paste without overwriting register
 map("v", "p", '"_dP')
 
--- INFO: Change text without overwriting register
+-- ? Change text without overwriting register
 map({ "n", "v" }, "c", '"_c')
 
--- INFO: Change text without overwriting register
+-- ? Change text without overwriting register
 map({ "n", "v" }, "x", '"_x')
 
--- INFO: Move block
+-- ? Move block
 map("v", "<A-k>", ":m '<-2<CR>gv=gv", { desc = "Move Block Up" })
 map("v", "<A-j>", ":m '>+1<CR>gv=gv", { desc = "Move Block Down" })
 
--- INFO: Move line
+-- ? Move line
 map("i", "<A-j>", "<ESC>V:m '>+1<CR>a", { desc = "Move line down" })
 map("i", "<A-k>", "<ESC>V:m '<-2<CR>a", { desc = "Move line up" })
 map("n", "<A-j>", "V:m '>+1<CR>", { desc = "Move line down" })
 map("n", "<A-k>", "V:m '<-2<CR>", { desc = "Move line up" })
 
--- INFO: Search for highlighted text in buffer
+-- ? Search for highlighted text in buffer
 map("v", "//", 'y/<C-R>"<CR>', { desc = "Search for highlighted text" })
 
--- INFO: Copy file paths
+-- ? Copy file paths
 map("n", "<leader>cf", '<cmd>let @+ = expand("%")<CR>', { desc = "Copy File Name" })
 map("n", "<leader>cp", '<cmd>let @+ = expand("%:p")<CR>', { desc = "Copy File Path" })
 
--- INFO: Fix lsp bug with macro mode
+-- ? Fix lsp bug with macro mode
 map("n", "q", "", { desc = "Remove q to go macro mode" })
 map("n", "Q", "q", { desc = "Mapping macro mode to Q" })
 
@@ -60,47 +60,47 @@ map(
   { desc = "Change current working directory locally and print cwd after that" }
 )
 
--- INFO: Close all other buffers
+-- ? Close all other buffers
 map("n", "<leader>X", function()
   require("nvchad.tabufline").closeBufs_at_direction "left"
   require("nvchad.tabufline").closeBufs_at_direction "right"
 end)
 
--- INFO: Select whole file
+-- ? Select whole file
 map("n", "<leader>a", "ggVG", { desc = "Select whole file" })
 
--- INFO: LSP format
+-- ? LSP format
 map("n", "<leader>ii", function()
   vim.lsp.buf.format { async = true }
 end, { desc = "LSP formatting" })
 
--- INFO: Close all files(exit neovim)
+-- ? Close all files(exit neovim)
 map("n", "<leader>Q", ":qa<CR>", { desc = "Close all buffers" })
 map("n", "<leader>q", ":x<CR>", { desc = "Save the file if modified and exit" })
 
--- INFO: Reselect the text that has just been pasted
+-- ? Reselect the text that has just been pasted
 map("n", "<leader>V", "`[V`]", { desc = "Reselect the text that has just been pasted" })
 
--- INFO: Resize split windows with arrows
+-- ? Resize split windows with arrows
 map("n", "<A-Up>", ":resize +5<CR>", { desc = "Resize Horizontal Split Down" })
 map("n", "<A-Down>", ":resize -5<CR>", { desc = "Resize Horizontal Split Up" })
 map("n", "<A-Right>", ":vertical resize -5<CR>", { desc = "Resize Vertical Split Down" })
 map("n", "<A-Left>", ":vertical resize +5<CR>", { desc = "Resize Vertical Split Up" })
 
--- INFO: Split windows keymaps
+-- ? Split windows keymaps
 map("n", "<leader>sv", "<C-w>v", { desc = "Split window vertically" })
 map("n", "<leader>ss", "<C-w>s", { desc = "Split window horizontally" })
 map("n", "<leader>se", "<C-w>=", { desc = "Make split windows equal width & height" })
 map("n", "<leader>sx", "<cmd> close <CR>", { desc = "Close split windows" })
 
--- INFO: Set tmux-navigator keymaps -> Make compatible Nvim with Tmux
+-- ? Set tmux-navigator keymaps -> Make compatible Nvim with Tmux
 map("n", "<C-h>", "<cmd> NvimTmuxNavigateLeft <CR>", { desc = "Window left" })
 map("n", "<C-j>", "<cmd> NvimTmuxNavigateDown <CR>", { desc = "Window down" })
 map("n", "<C-k>", "<cmd> NvimTmuxNavigateUp <CR>", { desc = "Window up" })
 map("n", "<C-l>", "<Cmd>NvimTmuxNavigateRight<CR>", { desc = "Window right" })
 map("n", "<C-\\>", "<Cmd>NvimTmuxNavigateLastActive<CR>", { desc = "Window up" })
 
--- INFO: Navigate between buffers with shift + ctrl + j/k
+-- ? Navigate between buffers with shift + ctrl + j/k
 map("n", "<M-C-K>", function()
   require("nvchad.tabufline").next()
 end, { desc = "Buffer - goto next" })
@@ -108,44 +108,44 @@ map("n", "<M-NL>", function()
   require("nvchad.tabufline").prev()
 end, { desc = "Buffer - goto prev" })
 
--- INFO: Enter new line in normal mode
+-- ? Enter new line in normal mode
 map("n", "<leader>o", "o<ESC>", { desc = "New-line below" })
 map("n", "<leader>O", "O<ESC>", { desc = "New-line top" })
 
--- INFO: Indent with just one > and < in normal mode
+-- ? Indent with just one > and < in normal mode
 map("n", "<", "<<", { desc = "Indent backward" })
 map("n", ">", ">>", { desc = "Indent forward" })
 map("v", ">", ">gv", { desc = "Being in visual mode when indent to right" })
 map("v", "<", "<gv", { desc = "Being in visual mode when indent to right" })
 
--- INFO: Go to start and end of the line with shift + H/L in normal and visual mode
+-- ? Go to start and end of the line with shift + H/L in normal and visual mode
 map({ "n", "v" }, "H", "^", { desc = "Go to the first char at line" })
 map({ "n", "v" }, "L", "$", { desc = "Go to the last char at line" })
 
--- INFO: Aliases for exit from normal mode
+-- ? Aliases for exit from normal mode
 map("i", "jk", "<ESC>", { desc = "escape insert mode", nowait = true })
 map("i", "jj", "<ESC>", { desc = "escape insert mode", nowait = true })
 map("i", "kk", "<ESC>", { desc = "escape insert mode", nowait = true })
 
--- INFO: Add ctrl + v as paste in insert mode
+-- ? Add ctrl + v as paste in insert mode
 map("i", "<M-C-V>", "<C-v>", { desc = "Map c-v to alt + ctrl + v" })
 map("i", "<C-v>", "<ESC>pa", { desc = "Paste after cursor" })
 
--- INFO: Copy current line with ctrl + c in normal and insert and visual mode
+-- ? Copy current line with ctrl + c in normal and insert and visual mode
 map("i", "<C-c>", "<CMD>yank<CR>", { desc = "Copy current line" })
 map({ "n", "v" }, "<C-c>", ":yank<CR>", { desc = "Copy current line" })
 
--- INFO: Save file with ctrl + s
+-- ? Save file with ctrl + s
 map({ "n", "i", "v" }, "<C-s>", "<CMD>w<CR>", { desc = "Save file" })
 
--- INFO: Undo with ctrl + z
+-- ? Undo with ctrl + z
 map({ "i", "n", "v" }, "<C-z>", "<cmd>undo<cr>", { desc = "Undo" })
 map({ "i", "n", "v" }, "<M-C-Z>", "<cmd>redo<cr>", { desc = "Redo" })
 
--- INFO: Delete word after cursor in insert mode
+-- ? Delete word after cursor in insert mode
 map("i", "<C-Del>", "<ESC>ldwha", { desc = "Delete word after cursor" })
 
--- INFO: UFO(pkg) folding:
+-- ? UFO(pkg) folding:
 map("n", "zR", require("ufo").openAllFolds, { desc = "UFO Open all folds" })
 map("n", "zM", require("ufo").closeAllFolds, { desc = "UFO Close all folds" })
 map("n", "zk", function()
@@ -156,7 +156,7 @@ map("n", "zk", function()
   end
 end, { desc = "Show fold preview else show hover documentation" })
 
--- INFO: hop easymotion:
+-- ? hop easymotion:
 map("n", "<leader><leader>s", "<cmd> HopChar1MW <CR>", { desc = "Search by 1 characters" })
 map("n", "<leader><leader>S", "<cmd> HopChar2MW <CR>", { desc = "Search by 2 characters" })
 map("n", "<leader><leader>f", "<cmd> HopChar1AC <CR>", { desc = "Find 1 characters forwards" })
@@ -168,7 +168,7 @@ map("n", "<leader><leader>k", "<cmd> HopLineStartBC <CR>", { desc = "Start of li
 map("n", "<leader><leader>w", "<cmd> HopWordMW <CR>", { desc = "Start of words" })
 map("n", "<leader><leader>/", "<cmd> HopPatternMW <CR>", { desc = "Search by pattern" })
 
--- INFO: lsp + telescope and lsp + lspsaga
+-- ? lsp + telescope and lsp + lspsaga
 map("n", "<leader>gr", "<cmd>Telescope lsp_references<CR>", { desc = "LSP Telescope show refrences" })
 map("n", "gr", "<cmd>Telescope lsp_references<CR>", { desc = "LSP Telescope show refrences" })
 map("n", "gd", "<cmd>Lspsaga peek_definition<CR>", { desc = "LSP definition" })
@@ -196,5 +196,5 @@ map("n", "K", function()
   end
 end, { desc = "Show errors if exist, else show fold preview, else Show documentation for what is under cursor" })
 
--- INFO: Get registers with Telescopcope registers
+-- ? Get registers with Telescopcope registers
 map("n", "<leader>rr", ":Telescope registers<CR>", { desc = "Registers in telescope" })
