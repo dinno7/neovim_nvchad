@@ -1,7 +1,7 @@
 local autocmd = vim.api.nvim_create_autocmd
 
 -- INFO: Close all folds in entering buffer
-autocmd({ "BufRead", "BufEnter" }, {
+autocmd("BufRead", {
   callback = function()
     vim.cmd [[ silent! foldclose! ]]
     local bufnr = vim.api.nvim_get_current_buf()

@@ -9,7 +9,7 @@ o.foldcolumn = "auto:9"
 o.foldlevel = 99
 o.foldlevelstart = 99
 o.foldenable = true
-o.fillchars = [[eob: ,fold: ,foldopen:,foldsep:,foldclose:]]
+o.fillchars = [[eob: ,fold: ,foldopen:,foldsep:│,foldclose:]]
 
 o.relativenumber = true
 
