@@ -30,7 +30,14 @@ return {
           fg = "#8aadf4",
           bg = "",
           bold = true,
-          virtual_text = "❔",
+          virtual_text = "",
+        },
+        {
+          name = "INFO",
+          fg = "#8aadf4",
+          bg = "",
+          bold = true,
+          virtual_text = "",
         },
       },
     }
