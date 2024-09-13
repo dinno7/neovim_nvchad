@@ -9,11 +9,11 @@ return {
           fg = "#a5adcb",
           bg = "",
           bold = true,
-          virtual_text = "📚",
+          virtual_text = "",
         },
         {
           name = ":",
-          fg = "#b8c0e0",
+          fg = "#a6adc8",
           bg = "",
           bold = false,
           virtual_text = "",
@@ -23,7 +23,7 @@ return {
           fg = "#ed8796",
           bg = "",
           bold = true,
-          virtual_text = "‼️",
+          virtual_text = "",
         },
         {
           name = "?",
