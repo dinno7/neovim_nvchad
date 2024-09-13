@@ -3,6 +3,10 @@ require "nvchad.mappings"
 local map = vim.keymap.set
 local nomap = vim.keymap.del
 
+-- ? Have j and k navigate visual lines rather than logical ones
+map("n", "j", "gj")
+map("n", "k", "gk")
+
 -- ? Keep window centered when going up/down
 map("n", "<C-d>", "<C-d>zz")
 map("n", "<C-u>", "<C-u>zz")
