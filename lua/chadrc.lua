@@ -30,6 +30,9 @@ M.ui = {
     icon_colors = true,
   },
 
+  hl_add = {
+    ["HLOnYank"] = { bg = "#a6e3a1", fg = "#303446" },
+  },
   hl_override = {
     Comment = { italic = true },
     ["@comment"] = { italic = true },
@@ -38,6 +41,10 @@ M.ui = {
     },
     Folded = {
       bg = "#363a4f",
+    },
+    Visual = {
+      bg = "#586985",
+      fg = "#f7faff",
     },
   },
 
