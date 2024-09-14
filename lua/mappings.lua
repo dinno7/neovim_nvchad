@@ -143,6 +143,9 @@ map("i", "<C-v>", "<ESC>pa", { desc = "Paste after cursor" })
 map("i", "<C-c>", "<CMD>yank<CR>", { desc = "Copy current line" })
 map({ "n", "v" }, "<C-c>", ":yank<CR>", { desc = "Copy current line" })
 
+-- ? Cut line in insert mode
+map("i", "<C-x>", "<esc>0Da")
+
 -- ? Save file with ctrl + s
 map({ "n", "i", "v" }, "<C-s>", "<CMD>w<CR>", { desc = "Save file" })
 
