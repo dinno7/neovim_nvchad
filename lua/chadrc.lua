@@ -34,8 +34,8 @@ M.ui = {
     ["HLOnYank"] = { bg = "#a6e3a1", fg = "#303446" },
   },
   hl_override = {
-    Comment = { italic = true },
-    ["@comment"] = { italic = true },
+    Comment = { fg = "#9399b2" },
+    ["@comment"] = { fg = "#9399b2" },
     CursorLine = {
       bg = "#24273a",
     },
