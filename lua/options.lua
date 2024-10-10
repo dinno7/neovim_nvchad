@@ -1,4 +1,5 @@
 require "nvchad.options"
+-- require "comment-highlight"
 
 local o = vim.opt
 

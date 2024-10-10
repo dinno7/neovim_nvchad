@@ -14,6 +14,8 @@ map("n", "O", "zzO")
 -- ? Keep window centered when going up/down
 map("n", "<C-d>", "<C-d>zz")
 map("n", "<C-u>", "<C-u>zz")
+
+-- ? Keep window centered when search next or previous
 map("n", "n", "nzzzv")
 map("n", "N", "Nzzzv")
 
