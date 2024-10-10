@@ -4,34 +4,20 @@
 ---@class ChadrcConfig
 local M = {}
 
-M.ui = {
-  theme = "catppuccin",
+M.base46 = {
+  theme = "decay",
 
   transparency = true,
 
-  cmp = {
-    icons = true,
-    lspkind_text = true,
-    style = "default", -- default/flat_light/flat_dark/atom/atom_colored
-  },
-
-  statusline = {
-    theme = "minimal", -- default/vscode/vscode_colored/minimal
-    separator_style = "round",
-    -- default/round/block/arrow separators work only for default statusline theme
-    -- round and block will work for minimal theme only
-    order = nil,
-    modules = nil,
-  },
-
-  tabufline = {
-    show_numbers = true,
-    buffer_id_index = true,
-    icon_colors = true,
-  },
-
   hl_add = {
     ["HLOnYank"] = { bg = "#a6e3a1", fg = "#303446" },
+    ["DINNOCommentQuestion"] = { fg = "#8aadf4", bold = true },
+    ["DINNOCommentArrow"] = { fg = "#a5adcb", bold = true },
+    ["DINNOCommentDoubleArrow"] = { fg = "#a6adc8", bold = false },
+    ["DINNOCommentExclamation"] = { fg = "#ed8796", bold = true },
+    ["DINNOCommentInfo"] = { fg = "#8aadf4", bold = true },
+    ["DINNOCommentTodo"] = { fg = "#8aadf4", bold = true },
+    ["DINNOCommentFix"] = { fg = "#ed8796", bold = true },
   },
   hl_override = {
     Comment = { fg = "#9399b2" },
@@ -47,56 +33,38 @@ M.ui = {
       fg = "#f7faff",
     },
   },
+}
 
-  nvdash = {
-    load_on_startup = true,
-    header = {
-      [[ ██████████    ███                                ]],
-      [[░░███░░░░███  ░░░                                 ]],
-      [[ ░███   ░░███ ████  ████████   ████████    ██████ ]],
-      [[ ░███    ░███░░███ ░░███░░███ ░░███░░███  ███░░███]],
-      [[ ░███    ░███ ░███  ░███ ░███  ░███ ░███ ░███ ░███]],
-      [[ ░███    ███  ░███  ░███ ░███  ░███ ░███ ░███ ░███]],
-      [[ ██████████   █████ ████ █████ ████ █████░░██████ ]],
-      [[░░░░░░░░░░   ░░░░░ ░░░░ ░░░░░ ░░░░ ░░░░░  ░░░░░░  ]],
-      [[                                                  ]],
-      [[                                                  ]],
-      [[                                                  ]],
-      [[    █████                                █████    ]],
-      [[   ░░███                                ░░███     ]],
-      [[    ░███         ██████   ████████    ███████     ]],
-      [[    ░███        ░░░░░███ ░░███░░███  ███░░███     ]],
-      [[    ░███         ███████  ░███ ░███ ░███ ░███     ]],
-      [[    ░███      █ ███░░███  ░███ ░███ ░███ ░███     ]],
-      [[    ███████████░░████████ ████ █████░░████████    ]],
-      [[   ░░░░░░░░░░░  ░░░░░░░░ ░░░░ ░░░░░  ░░░░░░░░     ]],
-
-      -- [[                                                                       ]],
-      -- [[                                                                       ]],
-      -- [[                                                                       ]],
-      -- [[                                                                       ]],
-      -- [[                                                                     ]],
-      -- [[       ████ ██████           █████      ██                     ]],
-      -- [[      ███████████             █████                             ]],
-      -- [[      █████████ ███████████████████ ███   ███████████   ]],
-      -- [[     █████████  ███    █████████████ █████ ██████████████   ]],
-      -- [[    █████████ ██████████ █████████ █████ █████ ████ █████   ]],
-      -- [[  ███████████ ███    ███ █████████ █████ █████ ████ █████  ]],
-      -- [[ ██████  █████████████████████ ████ █████ █████ ████ ██████ ]],
-      -- [[                                                                       ]],
-      -- [[                                                                       ]],
-      -- [[                                                                       ]],
+M.ui = {
+  cmp = {
+    icons_left = false, -- only for non-atom styles!
+    lspkind_text = true,
+    style = "default", -- default/flat_light/flat_dark/atom/atom_colored
+    format_colors = {
+      tailwind = false, -- will work for css lsp too
+      icon = "󱓻",
     },
+  },
 
-    buttons = {
-      { "󰙅 Files tree", "Spc e", "NvimTreeToggle" },
-      { "  Find File", "Spc f f", "Telescope find_files" },
-      { "  Recent Files", "Spc f o", "Telescope oldfiles" },
-      { "  Find Word", "Spc f w", "Telescope live_grep" },
-      { "  Bookmarks", "Spc m a", "Telescope marks" },
-      { "  Themes", "Spc t h", "Telescope themes" },
-      { "  Mappings", "Spc c h", "NvCheatsheet" },
-    },
+  telescope = { style = "bordered" }, -- borderless / bordered
+  statusline = {
+    theme = "vscode_colored", -- default/vscode/vscode_colored/minimal
+    -- default/round/block/arrow separators work only for default statusline theme
+    -- round and block will work for minimal theme only
+    separator_style = "default",
+    order = nil,
+    modules = nil,
+  },
+
+  -- lazyload it when there are 1+ buffers
+  tabufline = {
+    enabled = true,
+    lazyload = true,
+    order = { "treeOffset", "buffers", "tabs", "btns" },
+    modules = nil,
+    show_numbers = true,
+    buffer_id_index = true,
+    icon_colors = true,
   },
 }
 
@@ -110,6 +78,78 @@ M.term = {
     width = 0.5,
     height = 0.5,
     border = "single",
+  },
+}
+
+-- Highlight colors in Neovim
+M.colorify = {
+  enabled = true,
+  mode = "virtual", -- fg, bg, virtual
+  virt_text = "󱓻 ",
+  highlight = { hex = true, lspvars = true },
+}
+
+M.nvdash = {
+  load_on_startup = true,
+  header = {
+    [[ ██████████    ███                                ]],
+    [[░░███░░░░███  ░░░                                 ]],
+    [[ ░███   ░░███ ████  ████████   ████████    ██████ ]],
+    [[ ░███    ░███░░███ ░░███░░███ ░░███░░███  ███░░███]],
+    [[ ░███    ░███ ░███  ░███ ░███  ░███ ░███ ░███ ░███]],
+    [[ ░███    ███  ░███  ░███ ░███  ░███ ░███ ░███ ░███]],
+    [[ ██████████   █████ ████ █████ ████ █████░░██████ ]],
+    [[░░░░░░░░░░   ░░░░░ ░░░░ ░░░░░ ░░░░ ░░░░░  ░░░░░░  ]],
+    [[                                                  ]],
+    [[                                                  ]],
+    [[                                                  ]],
+    [[    █████                                █████    ]],
+    [[   ░░███                                ░░███     ]],
+    [[    ░███         ██████   ████████    ███████     ]],
+    [[    ░███        ░░░░░███ ░░███░░███  ███░░███     ]],
+    [[    ░███         ███████  ░███ ░███ ░███ ░███     ]],
+    [[    ░███      █ ███░░███  ░███ ░███ ░███ ░███     ]],
+    [[    ███████████░░████████ ████ █████░░████████    ]],
+    [[   ░░░░░░░░░░░  ░░░░░░░░ ░░░░ ░░░░░  ░░░░░░░░     ]],
+    [[                                                  ]],
+    [[               Powered By  eovim                ]],
+    [[                                                  ]],
+
+    -- [[                                                                       ]],
+    -- [[                                                                       ]],
+    -- [[                                                                       ]],
+    -- [[                                                                       ]],
+    -- [[                                                                     ]],
+    -- [[       ████ ██████           █████      ██                     ]],
+    -- [[      ███████████             █████                             ]],
+    -- [[      █████████ ███████████████████ ███   ███████████   ]],
+    -- [[     █████████  ███    █████████████ █████ ██████████████   ]],
+    -- [[    █████████ ██████████ █████████ █████ █████ ████ █████   ]],
+    -- [[  ███████████ ███    ███ █████████ █████ █████ ████ █████  ]],
+    -- [[ ██████  █████████████████████ ████ █████ █████ ████ ██████ ]],
+    -- [[                                                                       ]],
+    -- [[                                                                       ]],
+    -- [[                                                                       ]],
+  },
+
+  buttons = {
+    { txt = "  Recent Files", keys = "Spc f o", cmd = "Telescope oldfiles" },
+    { txt = "  Find File", keys = "Spc f f", cmd = "Telescope find_files" },
+    { txt = "  Find Word", keys = "Spc f w", cmd = "Telescope live_grep" },
+    { txt = "  Bookmarks", keys = "Spc m a", cmd = "Telescope marks" },
+    { txt = "  Themes", keys = "Spc t h", cmd = "Telescope themes" },
+    { txt = "  Mappings", keys = "Spc c h", cmd = "NvCheatsheet" },
+    {
+      txt = function()
+        local stats = require("lazy").stats()
+        local ms = math.floor(stats.startuptime) .. " ms"
+        return "  Loaded " .. stats.loaded .. "/" .. stats.count .. " plugins in " .. ms
+      end,
+      hl = "NvDashLazy",
+      no_gap = true,
+    },
+
+    { txt = "─", hl = "NvDashLazy", no_gap = true, rep = true },
   },
 }
 return M
