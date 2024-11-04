@@ -17,6 +17,7 @@ local servers = {
   gopls = goplsOptions,
   ts_ls = tsserverOptions,
   volar = {},
+  clangd = {},
 }
 
 -- INFO: Initiate all defined servers
