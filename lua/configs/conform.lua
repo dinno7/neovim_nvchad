@@ -11,10 +11,10 @@ local options = {
     yaml = { "prettierd" },
     markdown = { "prettierd" },
     graphql = { "prettierd" },
-    vue = { "volar" },
     lua = { "stylua" },
-    python = { "isort", "black" },
-    cpp = { "clang-format" },
+    -- vue = { "volar" },
+    -- python = { "isort", "black" },
+    -- cpp = { "clang-format" },
     go = {
       "golines",
       "goimports",

@@ -8,16 +8,16 @@ local goplsOptions = require "configs.lspservers.gopls"
 
 -- INFO: LSP servers
 local servers = {
+  ts_ls = tsserverOptions,
+  gopls = goplsOptions,
   html = {},
   cssls = {},
   bashls = {},
   emmet_ls = {
     filetypes = { "html", "typescriptreact", "javascriptreact", "css", "vue", "sass", "scss", "less", "svelte" },
   },
-  gopls = goplsOptions,
-  ts_ls = tsserverOptions,
-  volar = {},
-  clangd = {},
+  -- volar = {},
+  -- clangd = {},
 }
 
 -- INFO: Initiate all defined servers

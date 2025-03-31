@@ -186,6 +186,7 @@ map("n", "<leader>gr", "<cmd>Telescope lsp_references<CR>", { desc = "LSP Telesc
 map("n", "gr", "<cmd>Telescope lsp_references<CR>", { desc = "LSP Telescope show refrences" })
 map("n", "gd", "<cmd>Lspsaga peek_definition<CR>", { desc = "LSP definition" })
 map("n", "gi", "<cmd>Telescope lsp_implementations<CR>", { desc = "LSP implementation" })
+map("n", "<leader>mm", "<cmd>Telescope marks<CR>", { desc = "See all marks" })
 map("n", "gf", "<cmd>Lspsaga finder<CR>", { desc = "Show definition, references" })
 map("n", "gt", "<cmd>Telescope lsp_type_definitions<CR>", { desc = "LSP definition type" })
 map("n", "<leader>dd", "<cmd>Telescope diagnostics bufnr=0<CR>", { desc = "Show buffer diagnostics" })
