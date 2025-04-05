@@ -4,7 +4,7 @@ return {
     ensure_installed = {
       "stylua",
       "emmet-ls",
-      "eslint-lsp",
+      "eslint_d",
       "prettierd",
       "lua-language-server",
       "bash-language-server",
@@ -16,7 +16,7 @@ return {
       "golangci-lint",
       "golines",
       -- > Others
-      "codespell",
+      "cspell",
       -- "clang-format",
       -- "clangd",
       -- "vue-language-server",

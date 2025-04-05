@@ -1,4 +1,3 @@
--- EXAMPLE
 local configs = require "nvchad.configs.lspconfig"
 local lspconfig = require "lspconfig"
 
