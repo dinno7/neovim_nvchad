@@ -30,7 +30,7 @@ map("i", "<c-u>", "<esc>viw~ea", { desc = "Word-cases Toggle the current word in
 map("v", "p", '"_dP')
 
 -- NOTE: Change text without overwriting register
-map({ "n", "v" }, "c", '"_c')
+map({ "n", "v" }, "x", '"_x')
 
 -- NOTE: Move block
 map("v", "<A-k>", ":m '<-2<CR>gv=gv", { desc = "Move Block Up" })
@@ -53,12 +53,8 @@ map("n", "<leader>cp", '<cmd>let @+ = expand("%:p")<CR>', { desc = "Copy File Pa
 map("n", "q", "", { desc = "Remove q to go macro mode" })
 map("n", "Q", "q", { desc = "Mapping macro mode to Q" })
 
-map(
-  "v",
-  "/",
-  ":<C-U>call feedkeys(\"/%>'.(line(''<\")-1).'l%<'.(line(\"'>\")+1).\"l\")<CR>",
-  { desc = "Search in selected region" }
-)
+-- NOTE: Save file without auto-formatting
+map("n", "<leader>sn", "<cmd>noautocmd w <CR>", { desc = "Save file without auto-formatting" })
 
 map(
   "n",
@@ -79,6 +75,9 @@ end)
 
 -- NOTE: Select whole file
 map("n", "<leader>a", "ggVG", { desc = "Select whole file" })
+
+-- NOTE: Copy whole file
+map("n", "<leader>ya", "<cmd>%y+<CR>", { desc = "Copy whole file" })
 
 -- NOTE: LSP format
 map("n", "<leader>ii", function()
@@ -104,6 +103,14 @@ map("n", "<leader>ss", "<C-w>s", { desc = "Split window horizontally" })
 map("n", "<leader>se", "<C-w>=", { desc = "Make split windows equal width & height" })
 map("n", "<leader>sx", "<cmd> close <CR>", { desc = "Close split windows" })
 
+-- NOTE: Tabs
+map("n", "<leader>tn", "<cmd> tabnew<CR>", { desc = "Open new tab" })
+map("n", "<leader>tx", "<cmd> tabclose<CR>", { desc = "Close current tab" }) --
+map("n", "<leader>tl", "<cmd> tabn<CR>", { desc = "Go to next tab" }) --
+map("n", "<leader>th", "<cmd> tabp<CR>", { desc = "Go to previous tab" }) --
+map("n", "<A-C-l>", "<cmd> tabn<CR>", { desc = "Go to next tab" }) --
+map("n", "<A-C-h>", "<cmd> tabp<CR>", { desc = "Go to previous tab" }) --
+
 -- NOTE: Set tmux-navigator keymaps -> Make compatible Nvim with Tmux
 map("n", "<C-h>", "<cmd> NvimTmuxNavigateLeft <CR>", { desc = "Window left" })
 map("n", "<C-j>", "<cmd> NvimTmuxNavigateDown <CR>", { desc = "Window down" })
@@ -111,11 +118,11 @@ map("n", "<C-k>", "<cmd> NvimTmuxNavigateUp <CR>", { desc = "Window up" })
 map("n", "<C-l>", "<Cmd>NvimTmuxNavigateRight<CR>", { desc = "Window right" })
 map("n", "<C-\\>", "<Cmd>NvimTmuxNavigateLastActive<CR>", { desc = "Window up" })
 
--- NOTE: Navigate between buffers with shift + ctrl + j/k
-map("n", "<M-C-K>", function()
+-- NOTE: Navigate between buffers with ctrl + alt + j/k
+map("n", "<A-C-K>", function()
   require("nvchad.tabufline").next()
 end, { desc = "Buffer - goto next" })
-map("n", "<M-NL>", function()
+map("n", "<A-C-J>", function()
   require("nvchad.tabufline").prev()
 end, { desc = "Buffer - goto prev" })
 
@@ -182,7 +189,7 @@ map("n", "<leader><leader>k", "<cmd> HopLineStartBC <CR>", { desc = "Start of li
 map("n", "<leader><leader>w", "<cmd> HopWordMW <CR>", { desc = "Start of words" })
 map("n", "<leader><leader>/", "<cmd> HopPatternMW <CR>", { desc = "Search by pattern" })
 
--- NOTE: telescope
+-- NOTE: Telescope
 map("n", "<leader>gr", "<cmd>Telescope lsp_references<CR>", { desc = "LSP Telescope show refrences" })
 map("n", "<leader>mm", "<cmd>Telescope marks<CR>", { desc = "See all marks" })
 map("n", "<leader>dd", "<cmd>Telescope diagnostics bufnr=0<CR>", { desc = "Show buffer diagnostics" })

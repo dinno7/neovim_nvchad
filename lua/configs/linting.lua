@@ -13,7 +13,7 @@ local lint_augroup = vim.api.nvim_create_augroup("lint", { clear = true })
 
 local function try_lint()
   lint.try_lint()
-  lint.try_lint "cspell"
+  -- lint.try_lint "cspell"
 end
 
 vim.api.nvim_create_autocmd({ "BufWritePost" }, {
