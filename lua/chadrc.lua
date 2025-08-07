@@ -5,22 +5,13 @@
 local M = {}
 
 M.base46 = {
-  theme = "github_dark",
-
-  transparency = true,
+  theme = "nightlamp",
+  transparency = false,
 
   hl_add = {
     ["HLOnYank"] = { bg = "#a6e3a1", fg = "#303446" },
-    ["DINNOCommentQuestion"] = { fg = "#8aadf4", bold = true },
-    ["DINNOCommentArrow"] = { fg = "#a5adcb", bold = true },
-    ["DINNOCommentDoubleArrow"] = { fg = "#a6adc8", bold = false },
-    ["DINNOCommentExclamation"] = { fg = "#ed8796", bold = true },
-    ["DINNOCommentInfo"] = { fg = "#8aadf4", bold = true },
-    ["DINNOCommentTodo"] = { fg = "#8aadf4", bold = true },
-    ["DINNOCommentFix"] = { fg = "#ed8796", bold = true },
   },
   hl_override = {
-    Comment = { fg = "#9399b2" },
     ["@comment"] = { fg = "#9399b2" },
     CursorLine = {
       bg = "#24273a",
@@ -39,15 +30,16 @@ M.ui = {
   cmp = {
     icons_left = false, -- only for non-atom styles!
     lspkind_text = true,
-    style = "default", -- default/flat_light/flat_dark/atom/atom_colored
+    style = "atom_colored", -- default/flat_light/flat_dark/atom/atom_colored
     format_colors = {
-      tailwind = false, -- will work for css lsp too
+      tailwind = true, -- will work for css lsp too
       icon = "󱓻",
     },
   },
 
   telescope = { style = "bordered" }, -- borderless / bordered
   statusline = {
+    enabled = true,
     theme = "vscode_colored", -- default/vscode/vscode_colored/minimal
     -- default/round/block/arrow separators work only for default statusline theme
     -- round and block will work for minimal theme only
